@@ -122,7 +122,16 @@ void drawTetrisBlock(int type, int dir, int x, int y, int color[3], bool is_prev
 // 绘制围墙单元
 void bkuni(int i, int j) {
     IMAGE img3;	// 定义 IMAGE 对象
+    // 先尝试加载图片（不判断返回值，兼容原有逻辑）
     loadimage(&img3, _T("..\\resources\\围墙.jpg"));
+
+    // 检查图片是否有效（宽度为0表示加载失败）
+    if (img3.getwidth() == 0) {
+        int wall_color[3] = { 120, 120, 120 };
+        drawUnitBlock(i, j, wall_color);
+        return;
+    }
+    // 图片有效，绘制
     putimage(i * B, j * B, &img3);
 }
 
