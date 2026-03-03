@@ -275,7 +275,7 @@ bool canrotate() {
     return true;
 }
 
-// 核心：计算当前方块的最小y坐标（仅游戏区域内的有效坐标）
+// 计算当前方块的最小y坐标（仅游戏区域内的有效坐标）
 int get_block_min_y() {
     int min_y = GAME_AREA_MAX_Y + 1; // 初始值设为游戏区域最大y+1
     for (int i = 0; i < 4; i++) {
@@ -379,7 +379,7 @@ void gen() {
     landing_start = 0;
 }
 
-// 保存已下落方块的位置和颜色到数组（安全版）
+// 保存已下落方块的位置和颜色到数组
 void savefell(int current_color[3]) {
     // 初始化最小y为当前depth（默认不更新）
     int block_min_y = depth;
